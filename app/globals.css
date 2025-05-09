@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+
+    /* Status colors - light mode */
+    --status-pending-bg: 48 100% 96%;
+    --status-pending-border: 48 100% 80%;
+    --status-pending-text: 48 100% 30%;
+
+    --status-contact-bg: 210 100% 96%;
+    --status-contact-border: 210 100% 80%;
+    --status-contact-text: 210 100% 30%;
+
+    --status-quit-bg: 0 100% 96%;
+    --status-quit-border: 0 100% 80%;
+    --status-quit-text: 0 100% 30%;
+
+    /* Payment status colors - light mode */
+    --payment-paid-bg: 142 76% 95%;
+    --payment-paid-border: 142 76% 80%;
+    --payment-paid-text: 142 76% 25%;
+
+    --payment-pending-bg: 38 100% 95%;
+    --payment-pending-border: 38 100% 80%;
+    --payment-pending-text: 38 100% 25%;
+
+    --payment-unpaid-bg: 0 100% 95%;
+    --payment-unpaid-border: 0 100% 80%;
+    --payment-unpaid-text: 0 100% 25%;
+
+    /* Profile status colors - light mode */
+    --profile-active-bg: 142 76% 95%;
+    --profile-active-border: 142 76% 80%;
+    --profile-active-text: 142 76% 25%;
+
+    --profile-inactive-bg: 0 100% 95%;
+    --profile-inactive-border: 0 100% 80%;
+    --profile-inactive-text: 0 100% 25%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+
+    /* Status colors - dark mode (improved contrast) */
+    --status-pending-bg: 48 70% 20%;
+    --status-pending-border: 48 70% 40%;
+    --status-pending-text: 48 100% 85%;
+
+    --status-contact-bg: 210 70% 20%;
+    --status-contact-border: 210 70% 40%;
+    --status-contact-text: 210 100% 85%;
+
+    --status-quit-bg: 0 70% 20%;
+    --status-quit-border: 0 70% 40%;
+    --status-quit-text: 0 100% 85%;
+
+    /* Payment status colors - dark mode (improved contrast) */
+    --payment-paid-bg: 142 50% 15%;
+    --payment-paid-border: 142 50% 35%;
+    --payment-paid-text: 142 100% 85%;
+
+    --payment-pending-bg: 38 70% 15%;
+    --payment-pending-border: 38 70% 35%;
+    --payment-pending-text: 38 100% 85%;
+
+    --payment-unpaid-bg: 0 70% 15%;
+    --payment-unpaid-border: 0 70% 35%;
+    --payment-unpaid-text: 0 100% 85%;
+
+    /* Profile status colors - dark mode */
+    --profile-active-bg: 142 50% 15%;
+    --profile-active-border: 142 50% 35%;
+    --profile-active-text: 142 100% 85%;
+
+    --profile-inactive-bg: 0 70% 15%;
+    --profile-inactive-border: 0 70% 35%;
+    --profile-inactive-text: 0 100% 85%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Optimize for Discloud */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+}
+
+/* Improve scrollbar for dark mode */
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+}
+
+/* Optimize for mobile */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Performance optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Status color utility classes */
+.status-pending {
+  background-color: hsl(var(--status-pending-bg));
+  border-color: hsl(var(--status-pending-border));
+  color: hsl(var(--status-pending-text));
+}
+
+.status-contact {
+  background-color: hsl(var(--status-contact-bg));
+  border-color: hsl(var(--status-contact-border));
+  color: hsl(var(--status-contact-text));
+}
+
+.status-quit {
+  background-color: hsl(var(--status-quit-bg));
+  border-color: hsl(var(--status-quit-border));
+  color: hsl(var(--status-quit-text));
+}
+
+/* Payment status utility classes */
+.payment-paid {
+  background-color: hsl(var(--payment-paid-bg));
+  border-color: hsl(var(--payment-paid-border));
+  color: hsl(var(--payment-paid-text));
+}
+
+.payment-pending {
+  background-color: hsl(var(--payment-pending-bg));
+  border-color: hsl(var(--payment-pending-border));
+  color: hsl(var(--payment-pending-text));
+}
+
+.payment-unpaid {
+  background-color: hsl(var(--payment-unpaid-bg));
+  border-color: hsl(var(--payment-unpaid-border));
+  color: hsl(var(--payment-unpaid-text));
+}
+
+/* Estilos para pagamentos fechados */
+.payment-locked {
+  position: relative;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.payment-locked::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 0.375rem;
+  pointer-events: none;
+}
+
+/* Profile status utility classes */
+.profile-active {
+  background-color: hsl(var(--profile-active-bg));
+  border-color: hsl(var(--profile-active-border));
+  color: hsl(var(--profile-active-text));
+}
+
+.profile-inactive {
+  background-color: hsl(var(--profile-inactive-bg));
+  border-color: hsl(var(--profile-inactive-border));
+  color: hsl(var(--profile-inactive-text));
+}
+
+/* Estilo para perfis inativos */
+.profile-inactive-card {
+  opacity: 0.75;
+  position: relative;
+}
+
+.profile-inactive-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 0, 0, 0.05),
+    rgba(255, 0, 0, 0.05) 10px,
+    rgba(255, 0, 0, 0.02) 10px,
+    rgba(255, 0, 0, 0.02) 20px
+  );
+  pointer-events: none;
+  border-radius: 0.375rem;
+}

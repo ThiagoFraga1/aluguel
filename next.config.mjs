@@ -10,13 +10,14 @@ const nextConfig = {
     unoptimized: true,
   },
   experimental: {
-    optimizeCss: true,
+    // Remover otimizações experimentais que podem causar problemas
+    // optimizeCss: true,
     optimizePackageImports: ['lucide-react'],
   },
   // Discloud specific settings
   output: 'standalone',
   distDir: 'dist',
-  // Add these configurations to fix deployment errors
+  // Configurações para ignorar erros durante o build
   eslint: {
     ignoreDuringBuilds: true,
   },
